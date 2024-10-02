@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'info_page.dart';
 import 'more_info_page.dart';
@@ -54,7 +55,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
               ListTile(
-                textColor: Colors.purple,
+                textColor: const Color.fromARGB(255, 223, 198, 229),
                 title: const Text('Settings'),
                 onTap: () {
                   Navigator.pop(context); // Close the drawer
@@ -67,16 +68,16 @@ class _MyHomePageState extends State<MyHomePage> {
                 },
               ),
               ListTile(
-                textColor: Colors.purple,
+                textColor: const Color.fromARGB(255, 223, 198, 229),
                 title: const Text('About Me'),
                 onTap: () {
                   Navigator.pop(context);
                   Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                      builder: (context) => const AboutMePage(),// Close the drawer
-                  ),
-                  );// Implement the about me functionality here
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const AboutMePage(),
+                    ),
+                  );
                 },
               ),
             ],
@@ -103,7 +104,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           builder: (context) => const LondonPage(),
                         ),
                       );
-                    },
+                    }, description: 'London, the capital city of England, is one of the worlds most visited cities in terms of international visits. It is home to an array of notable tourist attractions, attracting 20.42 million international visitors in 2018,[1] an additional 27.8 million overnighting domestic tourists in 2017, and 280 million day-trippers in 2015', imagePath: 'assets/images/london.jpg',
                   ),
                 ),
                 Expanded(
@@ -116,7 +117,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           builder: (context) => const NewYorkPage(),
                         ),
                       );
-                    },
+                    }, description: 'New York City has over 28,000 acres (110 km2) of parkland and 14 linear miles (22 km) of public beaches. Manhattans Central Park, designed by Frederick Law Olmsted and Calvert Vaux, is the most visited city park in the United States.', imagePath: 'assets/images/newyork.jpg',
                   ),
                 ),
                 Expanded(
@@ -129,7 +130,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           builder: (context) => const ParisPage(),
                         ),
                       );
-                    },
+                    }, description: 'It is overwhelmed with culture, history, iconic architecture, arty treasures, delicious food and exciting fashion. Europes most enchanting city, Paris is known for its many monuments, especially the Eiffel Tower, Notre-Dame Cathedral, Arc de Triomphe, Opéra Garnier, Les Invalides, etc.', imagePath: 'assets/images/paris.jpg',
                   ),
                 ),
                 Expanded(
@@ -142,31 +143,40 @@ class _MyHomePageState extends State<MyHomePage> {
                           builder: (context) => const RomePage(),
                         ),
                       );
-                    },
+                    }, description: 'Rome was called the “Eternal City” by the ancient Romans because they believed that no matter what happened in the rest of the world, the city of Rome would always remain standing. Exploring the city centre by foot surrounded by glorious monuments and colossal remains takes you back in time to the glory that was Rome.', imagePath: 'assets/images/rome.jpg',
                   ),
                 ),
               ],
             ),
           ),
           const SizedBox(height: 10),
+          // Destination Tiles Section
           Expanded(
             child: ListView(
               children: const [
                 DestinationTile(
                   title: 'London',
                   imagePath: 'assets/images/london.jpg',
+                  description: 'London, the capital city of England, is one of the worlds most visited cities in terms of international visits. It is home to an array of notable tourist attractions, attracting 20.42 million international visitors in 2018,[1] an additional 27.8 million overnighting domestic tourists in 2017, and 280 million day-trippers in 2015',
+                  detailedInfo: 'London offers attractions such as the British Museum...',
                 ),
                 DestinationTile(
                   title: 'New York',
                   imagePath: 'assets/images/new_york.jpg',
+                  description: 'New York City has over 28,000 acres (110 km2) of parkland and 14 linear miles (22 km) of public beaches. Manhattans Central Park, designed by Frederick Law Olmsted and Calvert Vaux, is the most visited city park in the United States.',
+                  detailedInfo: 'Top sights in New York include the Empire State Building...',
                 ),
                 DestinationTile(
                   title: 'Paris',
                   imagePath: 'assets/images/paris.jpg',
+                  description: 'It is overwhelmed with culture, history, iconic architecture, arty treasures, delicious food and exciting fashion. Europes most enchanting city, Paris is known for its many monuments, especially the Eiffel Tower, Notre-Dame Cathedral, Arc de Triomphe, Opéra Garnier, Les Invalides, etc.',
+                  detailedInfo: 'Visitors to Paris can enjoy the Eiffel Tower, the Louvre...',
                 ),
                 DestinationTile(
                   title: 'Rome',
                   imagePath: 'assets/images/rome.jpg',
+                  description: 'Rome was called the “Eternal City” by the ancient Romans because they believed that no matter what happened in the rest of the world, the city of Rome would always remain standing. Exploring the city centre by foot surrounded by glorious monuments and colossal remains takes you back in time to the glory that was Rome.',
+                  detailedInfo: 'Rome is famous for the Colosseum, the Vatican...',
                 ),
               ],
             ),
@@ -177,20 +187,33 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
+// DashboardCell now opens the InfoPage directly, just like the "Information" button
 class DashboardCell extends StatelessWidget {
   final String title;
-  final VoidCallback onTap;
+  final String description; // Add description
+  final String imagePath; // Add image path for more details
 
   const DashboardCell({
     super.key,
     required this.title,
-    required this.onTap,
+    required this.description, // Pass description
+    required this.imagePath, required Null Function() onTap, // Pass imagePath
   });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onTap,
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => InfoPage(
+              title: title,
+              description: description, // Pass the same description
+            ),
+          ),
+        );
+      },
       child: Card(
         margin: const EdgeInsets.all(8.0),
         color: Colors.blue[100],
@@ -208,14 +231,19 @@ class DashboardCell extends StatelessWidget {
   }
 }
 
+
 class DestinationTile extends StatelessWidget {
   final String title;
   final String imagePath;
+  final String description; // Add a description for the destination
+  final String detailedInfo; // Add detailed info for the "Know More" button
 
   const DestinationTile({
     super.key,
     required this.title,
     required this.imagePath,
+    required this.description, // Pass the description
+    required this.detailedInfo, // Pass detailed info
   });
 
   @override
@@ -252,7 +280,10 @@ class DestinationTile extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => InfoPage(title: title),
+                            builder: (context) => InfoPage(
+                              title: title,
+                              description: description, // Pass the description
+                            ),
                           ),
                         );
                       },
@@ -263,7 +294,10 @@ class DestinationTile extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => MoreInfoPage(title: title),
+                            builder: (context) => MoreInfoPage(
+                              title: title,
+                              detailedInfo: detailedInfo, // Pass detailed info
+                            ),
                           ),
                         );
                       },
@@ -288,7 +322,10 @@ class SettingsPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Settings'),
+        backgroundColor: Colors.black,
+        foregroundColor: Colors.red,
       ),
+      backgroundColor: const Color.fromARGB(255, 223, 198, 229),
       body: const Center(
         child: Text('Settings Page - under construction!'),
       ),
@@ -304,6 +341,8 @@ class AboutMePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('About Me'),
+        backgroundColor: Colors.black,
+        foregroundColor: Colors.red,
       ),
       backgroundColor: const Color.fromARGB(255, 223, 198, 229),
       body: const Center(
