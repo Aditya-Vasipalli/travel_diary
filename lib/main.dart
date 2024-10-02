@@ -151,7 +151,7 @@ class _MyHomePageState extends State<MyHomePage> {
           const SizedBox(height: 10),
           Expanded(
             child: ListView(
-              children: [
+              children: const [
                 DestinationTile(
                   title: 'London',
                   imagePath: 'assets/images/london.jpg',
@@ -182,10 +182,10 @@ class DashboardCell extends StatelessWidget {
   final VoidCallback onTap;
 
   const DashboardCell({
-    Key? key,
+    super.key,
     required this.title,
     required this.onTap,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -213,10 +213,10 @@ class DestinationTile extends StatelessWidget {
   final String imagePath;
 
   const DestinationTile({
-    Key? key,
+    super.key,
     required this.title,
     required this.imagePath,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -281,7 +281,7 @@ class DestinationTile extends StatelessWidget {
 }
 
 class SettingsPage extends StatelessWidget {
-  const SettingsPage({Key? key}) : super(key: key);
+  const SettingsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -297,7 +297,7 @@ class SettingsPage extends StatelessWidget {
 }
 
 class AboutMePage extends StatelessWidget {
-  const AboutMePage({Key? key}) : super(key: key);
+  const AboutMePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -305,6 +305,7 @@ class AboutMePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('About Me'),
       ),
+      backgroundColor: const Color.fromARGB(255, 223, 198, 229),
       body: const Center(
         child: Text('A small Flutter Demonstration Made By Aditya Vasipalli!'),
       ),
