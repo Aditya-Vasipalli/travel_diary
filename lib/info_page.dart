@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-
 class InfoPage extends StatelessWidget {
   final String title;
+  final String description; // Add a field for the description
 
-  const InfoPage({super.key, required this.title});
+  const InfoPage({super.key, required this.title, required this.description});
 
   @override
   Widget build(BuildContext context) {
@@ -14,15 +14,28 @@ class InfoPage extends StatelessWidget {
         backgroundColor: Colors.black,
         foregroundColor: Colors.red,
       ),
-      body: Center(
-        child: Text(
-          'Information about $title',
-          style: const TextStyle(fontSize: 24),
+      backgroundColor: const Color.fromARGB(255, 223, 198, 229),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              title,
+              style: const TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 16),
+            Text(
+              description, // Display the description here
+              style: const TextStyle(fontSize: 18),
+            ),
+          ],
         ),
       ),
     );
   }
 }
+
 
 class LondonPage extends StatelessWidget {
   const LondonPage({super.key});
