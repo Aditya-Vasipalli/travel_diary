@@ -1,9 +1,8 @@
-// more_info_page.dart
 import 'package:flutter/material.dart';
 
 class MoreInfoPage extends StatelessWidget {
   final String title;
-  final String detailedInfo; // Add a field for the detailed info
+  final String detailedInfo; 
 
   const MoreInfoPage({super.key, required this.title, required this.detailedInfo});
 
@@ -27,7 +26,7 @@ class MoreInfoPage extends StatelessWidget {
             ),
             const SizedBox(height: 16),
             Text(
-              detailedInfo, // Display the detailed information here
+              detailedInfo, 
               style: const TextStyle(fontSize: 18),
             ),
           ],
