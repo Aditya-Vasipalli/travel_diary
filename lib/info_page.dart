@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class InfoPage extends StatelessWidget {
   final String title;
-  final String description; // Add a field for the description
+  final String description; 
 
   const InfoPage({super.key, required this.title, required this.description});
 
@@ -26,7 +26,7 @@ class InfoPage extends StatelessWidget {
             ),
             const SizedBox(height: 16),
             Text(
-              description, // Display the description here
+              description, 
               style: const TextStyle(fontSize: 18),
             ),
           ],
