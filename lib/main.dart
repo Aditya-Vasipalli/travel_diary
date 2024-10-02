@@ -70,8 +70,13 @@ class _MyHomePageState extends State<MyHomePage> {
                 textColor: Colors.purple,
                 title: const Text('About Me'),
                 onTap: () {
-                  Navigator.pop(context); // Close the drawer
-                  // Implement the about me functionality here
+                  Navigator.pop(context);
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                      builder: (context) => const AboutMePage(),// Close the drawer
+                  ),
+                  );// Implement the about me functionality here
                 },
               ),
             ],
@@ -95,7 +100,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => InfoPage(title: 'London'),
+                          builder: (context) => const LondonPage(),
                         ),
                       );
                     },
@@ -108,7 +113,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => InfoPage(title: 'New York'),
+                          builder: (context) => const NewYorkPage(),
                         ),
                       );
                     },
@@ -121,7 +126,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => InfoPage(title: 'Paris'),
+                          builder: (context) => const ParisPage(),
                         ),
                       );
                     },
@@ -134,7 +139,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => InfoPage(title: 'Rome'),
+                          builder: (context) => const RomePage(),
                         ),
                       );
                     },
@@ -286,6 +291,22 @@ class SettingsPage extends StatelessWidget {
       ),
       body: const Center(
         child: Text('Settings Page - under construction!'),
+      ),
+    );
+  }
+}
+
+class AboutMePage extends StatelessWidget {
+  const AboutMePage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('About Me'),
+      ),
+      body: const Center(
+        child: Text('A small Flutter Demonstration Made By Aditya Vasipalli!'),
       ),
     );
   }
