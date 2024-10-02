@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'info_page.dart';
 import 'more_info_page.dart';
@@ -58,7 +57,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 textColor: const Color.fromARGB(255, 223, 198, 229),
                 title: const Text('Settings'),
                 onTap: () {
-                  Navigator.pop(context); // Close the drawer
+                  Navigator.pop(context); 
                   Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -150,7 +149,6 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ),
           const SizedBox(height: 10),
-          // Destination Tiles Section
           Expanded(
             child: ListView(
               children: const [
@@ -187,17 +185,17 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
-// DashboardCell now opens the InfoPage directly, just like the "Information" button
+
 class DashboardCell extends StatelessWidget {
   final String title;
-  final String description; // Add description
-  final String imagePath; // Add image path for more details
+  final String description; 
+  final String imagePath; 
 
   const DashboardCell({
     super.key,
     required this.title,
-    required this.description, // Pass description
-    required this.imagePath, required Null Function() onTap, // Pass imagePath
+    required this.description,
+    required this.imagePath, required Null Function() onTap, 
   });
 
   @override
@@ -209,7 +207,7 @@ class DashboardCell extends StatelessWidget {
           MaterialPageRoute(
             builder: (context) => InfoPage(
               title: title,
-              description: description, // Pass the same description
+              description: description, 
             ),
           ),
         );
@@ -235,15 +233,15 @@ class DashboardCell extends StatelessWidget {
 class DestinationTile extends StatelessWidget {
   final String title;
   final String imagePath;
-  final String description; // Add a description for the destination
-  final String detailedInfo; // Add detailed info for the "Know More" button
+  final String description; 
+  final String detailedInfo; 
 
   const DestinationTile({
     super.key,
     required this.title,
     required this.imagePath,
-    required this.description, // Pass the description
-    required this.detailedInfo, // Pass detailed info
+    required this.description, 
+    required this.detailedInfo, 
   });
 
   @override
@@ -282,7 +280,7 @@ class DestinationTile extends StatelessWidget {
                           MaterialPageRoute(
                             builder: (context) => InfoPage(
                               title: title,
-                              description: description, // Pass the description
+                              description: description, 
                             ),
                           ),
                         );
@@ -296,7 +294,7 @@ class DestinationTile extends StatelessWidget {
                           MaterialPageRoute(
                             builder: (context) => MoreInfoPage(
                               title: title,
-                              detailedInfo: detailedInfo, // Pass detailed info
+                              detailedInfo: detailedInfo, 
                             ),
                           ),
                         );
