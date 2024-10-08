@@ -1,4 +1,4 @@
-# travel_diary
+# Travel Blog
 
-A simple flutter project based on a travel blog
+A flutter project which emulates a travel blog
 -Made by Aditya Vasipalli
